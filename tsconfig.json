@@ -7,8 +7,16 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "jsx": "react-jsx",
     "isolatedModules": false,
     "types": ["jest", "@testing-library/jest-dom"],
-    "erasableSyntaxOnly": false
-  }
+    "erasableSyntaxOnly": false,
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
