@@ -3,5 +3,12 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "isolatedModules": false,
+    "types": ["jest", "@testing-library/jest-dom"],
+    "erasableSyntaxOnly": false
+  }
 }

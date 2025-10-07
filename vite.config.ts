@@ -1,7 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+//import dts from 'vite-plugin-dts';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  plugins: [
+    /*
+    dts({
+      // Ensure enums are supported
+      tsconfigPath: './tsconfig.json',
+      skipDiagnostics: false
+    })
+    */
+  ]
+});
