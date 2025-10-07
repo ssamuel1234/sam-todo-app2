@@ -8,14 +8,16 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "isolatedModules": false,
+    "isolatedModules": true,
     "types": ["jest", "@testing-library/jest-dom"],
     "erasableSyntaxOnly": false,
     "strict": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

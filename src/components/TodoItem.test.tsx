@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import TodoItem from './TodoItem';
 import { Todo, TodoStatus } from '../types';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 const mockTodo: Todo = {
     id: '1',
@@ -12,7 +13,8 @@ const mockTodo: Todo = {
     status: 'NotStarted',
 };
 
-test('renders todo details', () => {
+//Step 7: Test Rendering TodoItem Details
+test('P3S7: renders todo details', () => {
     render(
         <TodoItem
             todo={mockTodo}
@@ -20,7 +22,7 @@ test('renders todo details', () => {
             onEdit={() => { }}
             onDelete={() => { }}
             onSelect={() => { }}
-            selected={false} 
+            selected={false}
         />
     );
 
@@ -31,3 +33,29 @@ test('renders todo details', () => {
     expect(screen.getByText('personal')).toBeInTheDocument();
     expect(screen.getByText('Not Started')).toBeInTheDocument();
 });
+
+//--------------------------------------------------------------------------
+//Step 8: Test TodoItem Completion Checkbox    
+test('P3S8: calls onToggleComplete on checkbox click', async () => {
+    const mockToggle = jest.fn();
+    render(
+        <TodoItem
+            todo={mockTodo}
+            onToggleComplete={mockToggle}
+            onEdit={() => { }}
+            onDelete={() => { }}
+            onSelect={() => { }}
+            selected={false}
+        />
+    );
+
+    const checkbox = screen.getByRole('checkbox',
+        {
+            name: /Toggle complete/i
+        }); 
+    await userEvent.click(checkbox);
+    expect(mockToggle).toHaveBeenCalledWith('1');
+
+});
+
+//--------------------------------------------------------------------------

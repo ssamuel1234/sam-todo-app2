@@ -41,11 +41,18 @@ return (
         Labels: {todo.labels.map(label => <span key={label}>{label}</span>)}
       </div>
       <span>{formatStatus(todo.status)}</span>
-      <input type="checkbox" checked={isCompleted} onChange={() => onToggleComplete(todo.id)} />
+        <input
+            type="checkbox"
+            checked={isCompleted}
+            onChange={() => onToggleComplete(todo.id)}
+            aria-label="Toggle complete"
+        />
       <button onClick={() => onEdit(todo.id)}>Edit</button>
       <button onClick={() => onDelete(todo.id)}>Delete</button>
     </div>
   );
+  
+    
 };
 
 export default TodoItem;
