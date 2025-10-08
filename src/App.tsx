@@ -1,35 +1,44 @@
 /**
- * Main App component.
+ * Main App component for the Todo SPA.
  */
-import type { FC } from 'react';
+import { FC } from 'react';
+import TodoItem from './components/TodoItem';
+import { TodoStatus, Todo } from './types';
+
+const mockTodo: Todo = {
+  id: '1',
+  name: 'Test Todo',
+  dueDate: '2025-09-14',
+  description: 'Test description',
+  labels: ['work'],
+  status: 'NotStarted',
+};
 
 const App: FC = () => {
   return (
     <div>
-      <h1>Todo App</h1>
       <section>
         <h2>Create Todo</h2>
-        {/* Example form for creating todos */}
-        <form>
-          <input type="text" placeholder="Add a todo" />
-          <button type="submit">Add</button>
-        </form>
+        {/* Placeholder for form */}
       </section>
       <section>
         <h2>Filters</h2>
-        {/* Example filter buttons */}
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        {/* Placeholder for filters */}
       </section>
       <section>
         <h2>Todo List</h2>
-        <ul>
-          <li>Test Todo</li>
-        </ul>
+        <TodoItem
+          todo={mockTodo}
+          onToggleComplete={(id) => console.log('Toggle', id)}
+          onEdit={(id) => console.log('Edit', id)}
+          onDelete={(id) => console.log('Delete', id)}
+          onSelect={(id) => console.log('Select', id)}
+          selected={false}
+        />
       </section>
     </div>
   );
 };
 
+//This is the corrected form of P4S11
 export default App;
