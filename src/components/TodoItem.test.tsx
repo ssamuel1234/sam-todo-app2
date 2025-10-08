@@ -88,3 +88,23 @@ test('calls onEdit and onDelete on button clicks', async () => {
     await userEvent.click(screen.getByLabelText('Delete'));
     expect(mockDelete).toHaveBeenCalledWith('1');
 });
+
+//---------------------------------------------------------
+//Step 10: Test TodoItem Multi-Select Checkbox
+test('P3S10: calls onSelect on multi-select checkbox click', async () => {
+  const mockSelect = jest.fn();
+  render(
+    <TodoItem
+      todo={mockTodo}
+      onToggleComplete={() => {}}
+      onEdit={() => {}}
+      onDelete={() => {}}
+      onSelect={mockSelect}
+      selected={false}
+    />
+  );
+
+  const selectCheckbox = screen.getAllByRole('checkbox')[0];
+  await userEvent.click(selectCheckbox);
+  expect(mockSelect).toHaveBeenCalledWith('1');
+});
