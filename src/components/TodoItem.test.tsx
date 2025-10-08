@@ -62,13 +62,13 @@ test('P3S8: calls onToggleComplete on checkbox click', async () => {
 //Step 9: Test TodoItem Edit and Delete Icons
 test('calls onEdit and onDelete on button clicks', async () => {
   const mockEdit = jest.fn();
-  //const mockDelete = jest.fn();
+  const mockDelete = jest.fn();
   render(
     <TodoItem
       todo={mockTodo}
       onToggleComplete={() => {}}
       onEdit={mockEdit}
-      //onDelete={mockDelete}
+      onDelete={mockDelete}
       onSelect={() => {}}
       selected={false}
     />
@@ -81,6 +81,10 @@ test('calls onEdit and onDelete on button clicks', async () => {
     await userEvent.click(screen.getByLabelText('Edit'));
     expect(mockEdit).toHaveBeenCalledWith('1');
 
-  //await userEvent.click(screen.getByText('Delete'));
-  //expect(mockDelete).toHaveBeenCalledWith('1');
+    const deletebutton = screen.getByRole('button',
+        {
+            name: /delete/i
+        });
+    await userEvent.click(screen.getByLabelText('Delete'));
+    expect(mockDelete).toHaveBeenCalledWith('1');
 });

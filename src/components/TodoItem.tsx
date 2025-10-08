@@ -49,9 +49,8 @@ return (
             aria-label="Toggle complete"
         />
       <button aria-label="Edit" onClick={() => onEdit(todo.id)}><FaEdit /></button>
-    {/*
       <button aria-label="Delete" onClick={() => onDelete(todo.id)}><FaTrash /></button>
-      */}
+      
       </div>
   );
   
