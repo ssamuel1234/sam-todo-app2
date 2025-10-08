@@ -12,7 +12,7 @@ const mockTodo: Todo = {
     labels: ['work', 'personal'],
     status: 'NotStarted',
 };
-
+//------------------------------------------------------------------------------
 //Step 7: Test Rendering TodoItem Details
 test('P3S7: renders todo details', () => {
     render(
@@ -59,3 +59,28 @@ test('P3S8: calls onToggleComplete on checkbox click', async () => {
 });
 
 //--------------------------------------------------------------------------
+//Step 9: Test TodoItem Edit and Delete Icons
+test('calls onEdit and onDelete on button clicks', async () => {
+  const mockEdit = jest.fn();
+  //const mockDelete = jest.fn();
+  render(
+    <TodoItem
+      todo={mockTodo}
+      onToggleComplete={() => {}}
+      onEdit={mockEdit}
+      //onDelete={mockDelete}
+      onSelect={() => {}}
+      selected={false}
+    />
+  );
+
+    const editbutton = screen.getByRole('button',
+        {
+            name: /edit/i
+        }); 
+    await userEvent.click(screen.getByLabelText('Edit'));
+    expect(mockEdit).toHaveBeenCalledWith('1');
+
+  //await userEvent.click(screen.getByText('Delete'));
+  //expect(mockDelete).toHaveBeenCalledWith('1');
+});

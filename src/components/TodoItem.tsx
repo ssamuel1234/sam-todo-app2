@@ -3,6 +3,7 @@
  */
 import { FC } from 'react';
 import { Todo, TodoStatus } from '../types';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 interface TodoItemProps {
     todo: Todo;
@@ -47,12 +48,13 @@ return (
             onChange={() => onToggleComplete(todo.id)}
             aria-label="Toggle complete"
         />
-      <button onClick={() => onEdit(todo.id)}>Edit</button>
-      <button onClick={() => onDelete(todo.id)}>Delete</button>
-    </div>
+      <button aria-label="Edit" onClick={() => onEdit(todo.id)}><FaEdit /></button>
+    {/*
+      <button aria-label="Delete" onClick={() => onDelete(todo.id)}><FaTrash /></button>
+      */}
+      </div>
   );
   
-    
 };
 
 export default TodoItem;
