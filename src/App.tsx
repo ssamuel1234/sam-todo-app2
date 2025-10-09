@@ -1,11 +1,10 @@
-/**
- * Main App component for the Todo SPA.
- */
 import { FC } from 'react';
 import TodoItem from './components/TodoItem';
-import { TodoStatus, Todo } from './types';
+import { Todo } from './types';
+import useLocalStorage from './hooks/useLocalStorage';
+import { v4 as uuidv4 } from 'uuid'; // Run `npm install uuid @types/uuid` first
 
-const mockTodo: Todo = {
+export const mockTodo: Todo = {
   id: '1',
   name: 'Test Todo',
   dueDate: '2025-09-14',
@@ -15,6 +14,8 @@ const mockTodo: Todo = {
 };
 
 const App: FC = () => {
+  const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
+
   return (
     <div>
       <section>
@@ -27,18 +28,20 @@ const App: FC = () => {
       </section>
       <section>
         <h2>Todo List</h2>
-        <TodoItem
-          todo={mockTodo}
-          onToggleComplete={(id) => console.log('Toggle', id)}
-          onEdit={(id) => console.log('Edit', id)}
-          onDelete={(id) => console.log('Delete', id)}
-          onSelect={(id) => console.log('Select', id)}
-          selected={false}
-        />
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggleComplete={(id) => {} /* placeholder */}
+            onEdit={(id) => {}}
+            onDelete={(id) => {}}
+            onSelect={(id) => {}}
+            selected={false}
+          />
+        ))}
       </section>
     </div>
   );
 };
 
-//This is the corrected form of P4S11
 export default App;
