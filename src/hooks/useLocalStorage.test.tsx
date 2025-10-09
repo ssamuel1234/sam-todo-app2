@@ -22,3 +22,9 @@ test('P5S14: saves updates to localStorage', () => {
     });
     expect(window.localStorage.getItem('todos')).toBe(JSON.stringify([{ id: '2' }]));
 });
+
+test('P5S15: handles invalid data in localStorage', () => {
+    window.localStorage.setItem('todos', 'invalid json');
+    const { result } = renderHook(() => useLocalStorage<Todo[]>('todos', []));
+    expect(result.current[0]).toEqual([]);
+})
