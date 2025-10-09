@@ -18,7 +18,7 @@ const TodoList: FC<TodoListProps> = ({ todos, onToggleComplete, onEdit, onDelete
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
     const handleSelect = (id: string) => {
-        setSelectedIds(prev => prev.includes(id) ? prev.filters(s => s !== id) : [...prev, id]);
+        setSelectedIds(prev => prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]);
     };
 
     if (todos.length === 0) {
@@ -41,7 +41,7 @@ const TodoList: FC<TodoListProps> = ({ todos, onToggleComplete, onEdit, onDelete
             {selectedIds.length > 0 && (
                 <div>
                     <button onClick={() => onBulkComplete(selectedIds)}>Complete Selected</button>
-                    <button onClick={() => onBulkComplete(selectedIds)}>Delete Selected</button>
+                    <button onClick={() => onBulkDelete(selectedIds)}>Delete Selected</button>
                 </div>
             )}
         </div>
