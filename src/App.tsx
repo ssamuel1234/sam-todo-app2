@@ -4,14 +4,7 @@ import { Todo } from './types';
 import useLocalStorage from './hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid'; // Run `npm install uuid @types/uuid` first
 
-export const mockTodo: Todo = {
-  id: '1',
-  name: 'Test Todo',
-  dueDate: '2025-09-14',
-  description: 'Test description',
-  labels: ['work'],
-  status: 'NotStarted',
-};
+
 
 const App: FC = () => {
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);

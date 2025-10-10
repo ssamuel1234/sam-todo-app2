@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import TodoList from './TodoList';
-import { mockTodo } from '../App';
+import { mockTodo } from '../App.test.tsx';
 import userEvent from '@testing-library/user-event';
 
 test('P7S17: renders empty state when no todos', () => {

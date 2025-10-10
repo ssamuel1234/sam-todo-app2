@@ -1,6 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import App, { mockTodo } from './App';
 
+export const mockTodo: Todo = {
+  id: '1',
+  name: 'Test Todo',
+  dueDate: '2025-09-14',
+  description: 'Test description',
+  labels: ['work'],
+  status: 'NotStarted',
+};
+
 beforeEach(() => {
   window.localStorage.clear(); // Clear localStorage for clean state
 });
