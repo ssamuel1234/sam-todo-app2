@@ -11,6 +11,9 @@
     "isolatedModules": true,
     "types": ["jest", "@testing-library/jest-dom"],
     "erasableSyntaxOnly": false,
+    "paths": {
+      "types": ["types.ts"]
+    },
     "strict": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,

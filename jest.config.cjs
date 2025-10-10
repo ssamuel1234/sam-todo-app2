@@ -8,6 +8,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    //    '^types$': '<rootDir>/types.ts',
   },
   extensionsToTreatAsEsm: ['.ts', '.tsx'], // Treat .ts/.tsx as ESM
 };
