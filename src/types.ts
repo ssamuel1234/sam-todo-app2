@@ -1,12 +1,6 @@
 /**
  * Enum for Todo status values.
  */
-/*export enum TodoStatus {
-  NotStarted = 'not started',
-  InProgress = 'in progress',
-  Waiting = 'waiting',
-  Completed = 'completed',
-}*/
 
 export type TodoStatus = 'NotStarted' | 'InProgress' | 'Waiting' |'Done';
 

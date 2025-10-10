@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import TodoItem from './TodoItem';
-import { Todo, TodoStatus } from '../types';
+import { Todo, TodoStatus } from 'types';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 

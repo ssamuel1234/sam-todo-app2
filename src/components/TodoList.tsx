@@ -1,9 +1,9 @@
 /**
  * Component to display list of todos or empty state.
  */
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import TodoItem from './TodoItem';
-import { Todo } from '../types';
+import type { Todo } from '../types';
 
 interface TodoListProps {
     todos: Todo[];

@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import useLocalStorage from './useLocalStorage';
 import { use, act } from 'react';
+import type { Todo } from '../types';
 
 //Step 12: Test Initializing useLocalStorage with Default Value
 test('P5S12: initializes with default value', () => {

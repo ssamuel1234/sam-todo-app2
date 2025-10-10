@@ -1,5 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import App, { mockTodo } from './App';
+import userEvent from '@testing-library/user-event';
+import App from './App';
+import type { Todo } from './types';
+import type { TodoStatus } from './types';
+
 
 export const mockTodo: Todo = {
   id: '1',
@@ -9,6 +13,8 @@ export const mockTodo: Todo = {
   labels: ['work'],
   status: 'NotStarted',
 };
+
+const status:TodoStatus  = 'Done'; 
 
 beforeEach(() => {
   window.localStorage.clear(); // Clear localStorage for clean state
@@ -25,4 +31,18 @@ test('P6S16: renders todo list from localStorage', () => {
   window.localStorage.setItem('todos', JSON.stringify([mockTodo]));
   render(<App />);
   expect(screen.getByText('Test Todo')).toBeInTheDocument();
+});
+
+test('P8S20: toggles todo completion', async () => {
+  window.localStorage.setItem('todos', JSON.stringify([mockTodo]));
+  render(<App />);
+
+  // Select the correct checkbox
+  const checkbox = screen.getByRole('checkbox', { name: /toggle complete/i });
+  await userEvent.click(checkbox);
+
+  const updated = JSON.parse(window.localStorage.getItem('todos') || '[]')[0];
+
+  // Check that the status changed
+  expect(updated.status).not.toBe(mockTodo.status);
 });

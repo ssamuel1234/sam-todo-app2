@@ -1,8 +1,11 @@
 /**
  * Component to display a single Todo item.
  */
-import { FC } from 'react';
-import { Todo, TodoStatus } from '../types';
+/**
+ * Component to display a single Todo item.
+ */
+import type { FC } from 'react';
+import type { Todo, TodoStatus } from '../types';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 interface TodoItemProps {

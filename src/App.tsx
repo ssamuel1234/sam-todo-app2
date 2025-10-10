@@ -9,6 +9,18 @@ import { v4 as uuidv4 } from 'uuid'; // Run `npm install uuid @types/uuid` first
 const App: FC = () => {
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
 
+  const handleToggleComplete = (id: string) => {
+    const updated = todos.map((todo) =>
+      todo.id === id
+        ? {
+            ...todo,
+            status: todo.status === 'Done' ? 'NotStarted' : 'Done',
+          }
+        : todo
+    );
+
+    setTodos(updated); // ✅ updates state and localStorage via the hook
+  };
   return (
     <div>
       <section>
@@ -25,7 +37,7 @@ const App: FC = () => {
           <TodoItem
             key={todo.id}
             todo={todo}
-            onToggleComplete={(id) => {} /* placeholder */}
+            onToggleComplete={handleToggleComplete}
             onEdit={(id) => {}}
             onDelete={(id) => {}}
             onSelect={(id) => {}}
