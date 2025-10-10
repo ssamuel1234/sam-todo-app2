@@ -19,8 +19,18 @@ const App: FC = () => {
         : todo
     );
 
+
     setTodos(updated); // ✅ updates state and localStorage via the hook
   };
+
+  const handleDelete = (id: string) => {
+    if (window.confirm('Delete this todo?')) {
+      setTodos(prev => prev.filter(todo => todo.id !== id));
+    }
+  };
+
+  // Pass to Todolist onDelete={handleDelete}
+
   return (
     <div>
       <section>

@@ -33,6 +33,7 @@ test('P6S16: renders todo list from localStorage', () => {
   expect(screen.getByText('Test Todo')).toBeInTheDocument();
 });
 
+//Step 20: Test Toggling Todo Completion in App
 test('P8S20: toggles todo completion', async () => {
   window.localStorage.setItem('todos', JSON.stringify([mockTodo]));
   render(<App />);
@@ -45,4 +46,15 @@ test('P8S20: toggles todo completion', async () => {
 
   // Check that the status changed
   expect(updated.status).not.toBe(mockTodo.status);
+});
+
+//Step 21: Test Deleting a Todo in App
+window.confirm = jest.fn(() => true); //Mock confirm
+
+test('P8S21: deletes a todo with confirmation', async () => {
+  window.localStorage.setItem('todos', JSON.stringify([mockTodo]));
+  render(<App />);
+
+  await userEvent.click(screen.getByLabelText('Delete'));
+  expect(JSON.parse(window.localStorage.getItem('todo') || '[]')).toEqual([]);
 });
