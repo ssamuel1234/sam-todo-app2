@@ -1,12 +1,4 @@
-/**
- * Enum for Todo status values.
- */
-
-export type TodoStatus = 'NotStarted' | 'InProgress' | 'Waiting' |'Done';
-
-/**
- * Interface for a Todo item.
- */
+// src/types.ts
 export interface Todo {
   id: string;
   name: string;
@@ -16,11 +8,7 @@ export interface Todo {
   status: TodoStatus;
 }
 
-/**
- * Interface for filters.
- */
-export interface Filters {
-  status: TodoStatus[] | 'all';
-  labels: string[];
-  searchText: string;
+export enum TodoStatus {
+  NotStarted = 'NotStarted',
+  Completed = 'Completed',
 }
